@@ -17,12 +17,12 @@ for i in range(len(data)):
     y_train[i] = data[i][2]
 
 xtr = tf.placeholder(tf.float32, [None, 2])
-ytr = tf.placeholder(tf.float32, [None])
+ytr = tf.placeholder(tf.float32, [None, 1])
 xte = tf.placeholder(tf.float32)
 
 K = 3
 
-distance = tf.negative(tf.reduce_sum(tf.abs(xtr,xte),axis=1))
+distance = tf.negative(tf.reduce_sum(tf.abs(xtr,xte), axis=1))
 values, indices = tf.nn.top_k(distance, k=K, sorted=False)
 
 sess = tf.InteractiveSession()
